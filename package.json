@@ -1,0 +1,10 @@
+{
+  "name": "circl-hashlookup",
+  "version": "3.0.0+2",
+  "main": "./integration.js",
+  "private": true,
+  "dependencies": {
+    "postman-request": "^2.88.1-postman.33",
+    "async": "3.2.5"
+  }
+}

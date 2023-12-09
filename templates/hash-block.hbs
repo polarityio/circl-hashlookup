@@ -1,0 +1,340 @@
+<div id={{concat "results-container-" uniqueIdPrefix}}>
+  <li class="d-flex align-items-center justify-content-end copy-btn-container">
+    <button class="btn copy-btn p-action" {{action "copyData"}} title="Copy Information to Clipboard">
+      {{fa-icon icon="clipboard" fixedWidth=true}}
+    </button>
+    <div class="copy-success-message {{if showCopyMessage "visible" "hidden"}}">
+      {{fa-icon icon="check" fixedWidth=true class="copy-success-icon"}}
+      Copied Information.
+    </div>
+  </li>
+</div>
+
+<div id="hash-lookup-container-{{uniqueIdPrefix}}">
+  {{#unless details.notFound}}
+    {{#if details.FileName}}
+      <div>
+        <span class="p-key">Filename:</span>
+        <span class="p-value">{{details.FileName}}</span>
+      </div>
+    {{/if}}
+    {{#if details.snap-filename}}
+      <div>
+        <span class="p-key">Snap Filename:</span>
+        <span class="p-value">{{details.snap-filename}}</span>
+      </div>
+    {{/if}}
+    {{#if details.snap-name}}
+      <div>
+        <span class="p-key">Snap Name:</span>
+        <span class="p-value">{{details.snap-name}}</span>
+      </div>
+    {{/if}}
+    {{#if details.snap-authority}}
+      <div>
+        <span class="p-key">Snap Authority:</span>
+        <span class="p-value">{{details.snap-authority}}</span>
+      </div>
+    {{/if}}
+    <div>
+      <span class="p-key">Trust Level</span>
+      <span class="p-key" {{action "toggleTrustFactorInfo"}}>{{fa-icon icon="question-circle" fixedWidth=true }}:</span>
+      <span class="p-value">{{details.hashlookup:trust}}</span>
+    </div>
+    {{#if viewTrustFactorInfo}}
+      <div class="p-footnote trust-info">
+        The CIRCL Hash Lookup service Trust level is a scale between 0 and 100. 50 means that CIRCL does not have any opinion on the file. If the score is below 50, CIRCL has less trust in the legitimacy of the file. If the file's trust score is above 50, it appears in multiple sources and has an improved trust.
+      </div>
+    {{/if}}
+    <div>
+      <span class="p-key">File Size:</span>
+      <span class="p-value">{{details.FileSize}} bytes</span>
+    </div>
+    {{#if details.CRC32}}
+      <div>
+        <span class="p-key">CRC32:</span>
+        <span class="p-value">{{details.CRC32}}</span>
+      </div>
+    {{/if}}
+    {{#if details.MD5}}
+      <div>
+        <span class="p-key">MD5:</span>
+        <span class="p-value">{{details.MD5}}</span>
+      </div>
+    {{/if}}
+    {{#if details.SHA-1}}
+      <div>
+        <span class="p-key">SHA-1:</span>
+        <span class="p-value">{{details.SHA-1}}</span>
+      </div>
+    {{/if}}
+    {{#if details.SpecialCode}}
+      <div>
+        <span class="p-key">Special Code:</span>
+        <span class="p-value">{{details.SpecialCode}}</span>
+      </div>
+    {{/if}}
+
+    {{#if details.ProductCode}}
+      <div>
+        <h1 class="p-title">{{fa-icon icon="compact-disc" fixedWidth=true}} Product Information</h1>
+        <div>
+          <span class="p-key">Product Name:</span>
+          <span class="p-value p-block">{{details.ProductCode.ProductName}}</span>
+        </div>
+        <div>
+          <span class="p-key">Product Version:</span>
+          <span class="p-value">{{details.ProductCode.ProductVersion}}</span>
+        </div>
+          <div>
+          <span class="p-key">Application Type:</span>
+          <span class="p-value">{{details.ProductCode.ApplicationType}}</span>
+        </div>
+        <div>
+          <span class="p-key">Product Language:</span>
+          <span class="p-value">{{details.ProductCode.Language}}</span>
+        </div>
+        <div>
+          <span class="p-key">Product Code:</span>
+          <span class="p-value">{{details.ProductCode.ProductCode}}</span>
+        </div>
+        <div>
+          <span class="p-key">Manufacturing Code:</span>
+          <span class="p-value">{{details.ProductCode.MfgCode}}</span>
+        </div>
+      </div>
+    {{/if}}
+
+    {{#if (or details.PackageName details.PackageSection details.PackageVersion details.PackageMaintainer details.PackageDescription)}}
+      <h1 class="p-title">{{fa-icon icon="boxes" fixedWidth=true}} Package Information</h1>
+      {{#if details.PackageName}}
+        <div>
+          <span class="p-key">Package Name:</span>
+          <span class="p-value">{{details.PackageName}}</span>
+        </div>
+      {{/if}}
+      {{#if details.PackageSection}}
+        <div>
+          <span class="p-key">Package Section:</span>
+          <span class="p-value">{{details.PackageSection}}</span>
+        </div>
+      {{/if}}
+      {{#if details.PackageVersion}}
+        <div>
+          <span class="p-key">Package Section:</span>
+          <span class="p-value">{{details.PackageVersion}}</span>
+        </div>
+      {{/if}}
+      {{#if details.PackageMaintainer}}
+        <div>
+          <span class="p-key">Package Maintainer:</span>
+          <span class="p-value">{{details.PackageMaintainer}}</span>
+        </div>
+      {{/if}}
+      {{#if details.PackageDescription}}
+        <div>
+          <span class="p-key">Package Description:</span>
+          <div class="p-value p-block p-pre">{{details.PackageDescription}}</div>
+        </div>
+      {{/if}}
+    {{/if}}
+
+    {{#if details.OpSystemCode}}
+      <div>
+        <h1 class="p-title">{{fa-icon icon="compact-disc" fixedWidth=true}} Operating System Code Identifier</h1>
+        <div>
+          <span class="p-key">OP System Code:</span>
+          <span class="p-value">{{details.OpSystemCode.OpSystemCode}}</span>
+          <div>
+            <span class="p-key">OP System Name:</span>
+            <span class="p-value">{{details.OpSystemCode.OpSystemName}}</span>
+          </div>
+          <div>
+            <span class="p-key">OP System Version:</span>
+            <span class="p-value">{{details.OpSystemCode.OpSystemVersion}}</span>
+          </div>
+          <div>
+            <span class="p-key">MFG Code:</span>
+            <span class="p-value">{{details.OpSystemCode.MfgCode}}</span>
+          </div>
+        </div>
+      </div>
+    {{/if}}
+
+    {{#if (or details.source details.db details.insert-timestamp)}}
+      <div>
+        <h1 class="p-title">{{fa-icon icon="book" fixedWidth=true}} Reference Info</h1>
+        {{#if details.source}}
+          <div>
+            <span class="p-key">Source DB:</span>
+            <span class="p-value">{{details.source}}</span>
+          </div>
+        {{/if}}
+        {{#if details.db}}
+          <div>
+            <span class="p-key">Source DB Ref:</span>
+            <span class="p-value">{{details.db}}</span>
+          </div>
+        {{/if}}
+        {{#if details.insert-timestamp}}
+          <div>
+            <span class="p-key">Timestamp:</span>
+            <span class="p-value">{{moment-format (unix details.insert-timestamp) "YYYY-MM-DD HH:mm:ss z" timeZone=timezone}}</span>
+          </div>
+        {{/if}}
+      </div>
+    {{/if}}
+
+    {{#if details.parents}}
+      <h1 class="p-title p-action" {{action "toggleParentInfo"}}>
+        {{fa-icon icon="box" fixedWidth=true}} Parent File Info
+        {{#if showParentInfo}}
+          {{fa-icon icon="chevron-up" fixedWidth=true}}
+        {{else}}
+          {{fa-icon icon="chevron-down" fixedWidth=true}}
+        {{/if}}
+      </h1>
+      {{#if showParentInfo}}
+        <div class="scrollable-container">
+          <div class="p-footnote mb-2">
+            {{details.parents.length}} parent files found.
+          </div>
+          {{#each details.parents as | parent index| }}
+          <div class="info-section">
+            <h1 class="p-title">{{fa-icon icon="file" fixedWidth=true}} Parent File #{{add index 1}}</h1>
+            {{#if parent.PackageName}}
+              <div>
+                <span class="p-key">Package Name:</span>
+                <span class="p-value">{{parent.PackageName}}</span>
+              </div>
+            {{/if}}
+            {{#if parent.PackageSection}}
+              <div>
+                <span class="p-key">Package Section:</span>
+                <span class="p-value">{{parent.PackageSection}}</span>
+              </div>
+            {{/if}}
+            {{#if parent.PackageVersion}}
+              <div>
+                <span class="p-key">Package Version:</span>
+                <span class="p-value">{{parent.PackageVersion}}</span>
+              </div>
+            {{/if}}
+            {{#if parent.snap-name}}
+              <div>
+                <span class="p-key">Snap Name:</span>
+                <span class="p-value">{{parent.snap-name}}</span>
+              </div>
+            {{/if}}
+            {{#if parent.snap-authority}}
+              <div>
+                <span class="p-key">Snap Authority:</span>
+                <span class="p-value">{{parent.snap-authority}}</span>
+              </div>
+            {{/if}}
+            {{#if parent.MD5}}
+              <div>
+                <span class="p-key">MD5:</span>
+                <span class="p-value">{{parent.MD5}}</span>
+              </div>
+            {{/if}}
+            {{#if parent.SHA-1}}
+              <div>
+                <span class="p-key">SHA1:</span>
+                <span class="p-value">{{parent.SHA-1}}</span>
+              </div>
+            {{/if}}
+            {{#if parent.SHA-256}}
+              <div>
+                <span class="p-key">SHA256:</span>
+                <span class="p-value">{{parent.SHA-256}}</span>
+              </div>
+            {{/if}}
+          </div>
+        {{/each}}
+        </div>
+      {{/if}}
+    {{/if}}
+
+    {{#if details.children}}
+      <h1 class="p-title p-action" {{action "toggleChildrenInfo"}}>
+        {{fa-icon icon="box" fixedWidth=true}} Child File Info
+        {{#if showParentInfo}}
+          {{fa-icon icon="chevron-up" fixedWidth=true}}
+        {{else}}
+          {{fa-icon icon="chevron-down" fixedWidth=true}}
+        {{/if}}
+      </h1>
+      {{#if showChildrenInfo}}
+        <div class="scrollable-container">
+          <div class="p-footnote mb-2">
+            {{details.children.length}} child files found.
+          </div>
+          {{#each details.children as | child index| }}
+            <h1 class="p-title">{{fa-icon icon="file" fixedWidth=true}} Child File #{{add index 1}}</h1>
+            <div class="info-section">
+            {{#if child.FileName}}
+              <div>
+                <span class="p-key">Filename:</span>
+                <span class="p-value">{{child.FileName}}</span>
+              </div>
+            {{/if}}
+            {{#if child.PackageName}}
+              <div>
+                <span class="p-key">Package Name:</span>
+                <span class="p-value">{{child.PackageName}}</span>
+              </div>
+            {{/if}}
+            {{#if child.PackageSection}}
+              <div>
+                <span class="p-key">child Section:</span>
+                <span class="p-value">{{child.PackageSection}}</span>
+              </div>
+            {{/if}}
+            {{#if child.PackageVersion}}
+              <div>
+                <span class="p-key">Package Version:</span>
+                <span class="p-value">{{child.PackageVersion}}</span>
+              </div>
+            {{/if}}
+            {{#if child.snap-name}}
+              <div>
+                <span class="p-key">Snap Name:</span>
+                <span class="p-value">{{child.snap-name}}</span>
+              </div>
+            {{/if}}
+            {{#if child.snap-authority}}
+              <div>
+                <span class="p-key">Snap Authority:</span>
+                <span class="p-value">{{child.snap-authority}}</span>
+              </div>
+            {{/if}}
+            {{#if child.MD5}}
+              <div>
+                <span class="p-key">MD5:</span>
+                <span class="p-value">{{child.MD5}}</span>
+              </div>
+            {{/if}}
+            {{#if child.SHA-1}}
+              <div>
+                <span class="p-key">SHA1:</span>
+                <span class="p-value">{{child.SHA-1}}</span>
+              </div>
+            {{/if}}
+            {{#if child.SHA-256}}
+              <div>
+                <span class="p-key">SHA256:</span>
+                <span class="p-value">{{child.SHA-256}}</span>
+              </div>
+            {{/if}}
+          </div>
+          {{/each}}
+        </div>
+      {{/if}}
+    {{/if}}
+  {{else}}
+    <div>
+      The hash was not found in the CIRCL Hash Lookup service.
+    </div>
+  {{/unless}}
+</div>
