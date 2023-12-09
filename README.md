@@ -1,6 +1,6 @@
 # Polarity CIRCL Hash Lookup Integration
 
-The Polarity - CIRCL Hash lookup integration searches the CIRCL public has lookup API which compares hash values against known database of files.  The integration supports lookups of MD5, SHA1, and SHA256 hashes.
+The Polarity - CIRCL Hash lookup integration searches the CIRCL public hash lookup API which compares hash values against a database of known files.  The integration supports lookups of MD5, SHA1, and SHA256 hashes.
 
 The CIRCL Hash lookup service includes hashes from:
 
