@@ -18,6 +18,13 @@ module.exports = {
   logging: {
     level: 'info'
   },
+  request: {
+    cert: '',
+    key: '',
+    passphrase: '',
+    ca: '',
+    proxy: ''
+  },
   options: [
     {
       key: 'showMisses',
