@@ -56,29 +56,42 @@ function lookupHash(entity, options, cb) {
       json: true
     },
     function (err, response, body) {
-      if (err || response.statusCode !== 200) {
-        if (response.statusCode == 404) {
-          cb(null, {
-            entity: entity,
-            data: {
-              summary: ['Not Found'],
-              details: {
-                notFound: true
-              }
+      if (err) {
+        return cb({
+          detail: 'Unexpected HTTP Request Error Encountered',
+          err
+        });
+      }
+
+      if (response.statusCode === 404 && options.showMisses) {
+        cb(null, {
+          entity,
+          data: {
+            summary: ['Not Found'],
+            details: {
+              notFound: true
             }
-          });
-        } else {
-          // return either the error object, or the body as an error
-          cb(err || body);
-        }
-      } else {
+          }
+        });
+      } else if (response.statusCode === 404 && !options.showMisses) {
+        cb(null, {
+          entity,
+          data: null
+        });
+      } else if (response.statusCode === 200) {
         // there was no error in making the GET request so process the body here
         cb(null, {
-          entity: entity,
+          entity,
           data: {
             summary: getSummaryTags(body),
             details: body
           }
+        });
+      } else {
+        // Unexpected HTTP Status Code
+        cb({
+          detail: `Unexpected HTTP Status Code [${response.statusCode}] Received`,
+          body
         });
       }
     }
@@ -89,7 +102,8 @@ function getSummaryTags(body) {
   const tags = [];
 
   if (typeof body['hashlookup:trust'] !== undefined) {
-    tags.push(`Trust Score: ${body['hashlookup:trust']}`);
+    // Trust level should always be available
+    tags.push(`Trust level: ${body['hashlookup:trust']}`);
   }
 
   if (body.FileName) {
