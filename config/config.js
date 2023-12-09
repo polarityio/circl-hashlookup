@@ -1,29 +1,31 @@
 module.exports = {
-  name: "CIRCL Hash Lookup",
-  acronym: "HASH",
+  name: 'CIRCL Hash Lookup',
+  acronym: 'HASH',
   description:
-    "Integration that can search MD5, SHA1, and SHA256 hashes against the known hashes server hosted by CIRCL",
-  entityTypes: ["MD5", "SHA1", "SHA256"],
-  styles: ["styles/style.less"],
+    'Integration that can search MD5, SHA1, and SHA256 hashes against the known hashes server hosted by CIRCL',
+  entityTypes: ['MD5', 'SHA1', 'SHA256'],
+  defaultColor: 'light-gray',
+  onDemandOnly: true,
+  styles: ['styles/style.less'],
   block: {
     component: {
-      file: "./components/hash-block.js"
+      file: './components/hash-block.js'
     },
     template: {
-      file: "./templates/hash-block.hbs"
+      file: './templates/hash-block.hbs'
     }
   },
   logging: {
-    level: "info"
+    level: 'info'
   },
   options: [
     {
-      key: "showMisses",
-      name: "Show Hashes that are Not Found",
+      key: 'showMisses',
+      name: 'Show Hashes that are Not Found',
       description:
         "If checked, the integration will return a 'Not Found' result for hashes that are not found in the CIRCL hash lookup service",
       default: true,
-      type: "boolean",
+      type: 'boolean',
       userCanEdit: false,
       adminOnly: true
     }

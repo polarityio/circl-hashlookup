@@ -2,10 +2,10 @@
  * Copyright (c) 2023, Polarity.io, Inc.
  */
 
-"use strict";
+'use strict';
 
-const request = require("postman-request");
-const async = require("async");
+const request = require('postman-request');
+const async = require('async');
 
 let Logger;
 
@@ -15,7 +15,7 @@ function startup(logger) {
 
 function doLookup(entities, options, cb) {
   const lookupResults = [];
-  Logger.trace({ entities }, "doLookup");
+  Logger.trace({ entities }, 'doLookup');
 
   async.each(
     entities,
@@ -30,7 +30,7 @@ function doLookup(entities, options, cb) {
       });
     },
     function (err) {
-      Logger.trace({ lookupResults }, "Lookup Results");
+      Logger.trace({ lookupResults }, 'Lookup Results');
       cb(err, lookupResults);
     }
   );
@@ -38,11 +38,11 @@ function doLookup(entities, options, cb) {
 
 function getHashType(entity) {
   if (entity.isMD5) {
-    return "md5";
+    return 'md5';
   } else if (entity.isSHA1) {
-    return "sha1";
+    return 'sha1';
   } else if (entity.isSHA256) {
-    return "sha256";
+    return 'sha256';
   } else {
     return null;
   }
@@ -61,7 +61,7 @@ function lookupHash(entity, options, cb) {
           cb(null, {
             entity: entity,
             data: {
-              summary: ["Not Found"],
+              summary: ['Not Found'],
               details: {
                 notFound: true
               }
@@ -88,8 +88,8 @@ function lookupHash(entity, options, cb) {
 function getSummaryTags(body) {
   const tags = [];
 
-  if (typeof body["hashlookup:trust"] !== undefined) {
-    tags.push(`Trust Score: ${body["hashlookup:trust"]}`);
+  if (typeof body['hashlookup:trust'] !== undefined) {
+    tags.push(`Trust Score: ${body['hashlookup:trust']}`);
   }
 
   if (body.FileName) {
@@ -100,7 +100,7 @@ function getSummaryTags(body) {
     tags.push(body.ProductName);
   }
 
-  if(body['snap-name']){
+  if (body['snap-name']) {
     tags.push(body['snap-name']);
   }
 
