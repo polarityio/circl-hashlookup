@@ -1,5 +1,5 @@
 polarity.export = PolarityComponent.extend({
-  details: Ember.computed.alias("block.data.details"),
+  details: Ember.computed.alias('block.data.details'),
   timezone: Ember.computed('Intl', function () {
     return Intl.DateTimeFormat().resolvedOptions().timeZone;
   }),
@@ -8,46 +8,56 @@ polarity.export = PolarityComponent.extend({
   showChildrenInfo: false,
   init() {
     let array = new Uint32Array(5);
-    this.set("uniqueIdPrefix", window.crypto.getRandomValues(array).join(""));
+    this.set('uniqueIdPrefix', window.crypto.getRandomValues(array).join(''));
 
     this._super(...arguments);
   },
   actions: {
     copyData: function () {
+      const savedSettings = {
+        showChildrenInfo: this.get('showChildrenInfo'),
+        showParentInfo: this.get('showParentInfo')
+      };
+
+      this.set('showChildrenInfo', true);
+      this.set('showParentInfo', true);
+
       Ember.run.scheduleOnce(
-        "afterRender",
+        'afterRender',
         this,
         this.copyElementToClipboard,
-        `hash-lookup-container-${this.get("uniqueIdPrefix")}`
+        `hash-lookup-container-${this.get('uniqueIdPrefix')}`
       );
 
-      Ember.run.scheduleOnce("destroy", this, this.restoreCopyState);
+      Ember.run.scheduleOnce('destroy', this, this.restoreCopyState, savedSettings);
     },
     toggleTrustFactorInfo: function () {
-      this.toggleProperty("viewTrustFactorInfo");
+      this.toggleProperty('viewTrustFactorInfo');
     },
-    toggleParentInfo: function() {
-      this.toggleProperty("showParentInfo");
+    toggleParentInfo: function () {
+      this.toggleProperty('showParentInfo');
     },
-    toggleChildrenInfo: function() {
-      this.toggleProperty("showChildrenInfo");
+    toggleChildrenInfo: function () {
+      this.toggleProperty('showChildrenInfo');
     }
   },
   copyElementToClipboard(element) {
     window.getSelection().removeAllRanges();
     let range = document.createRange();
 
-    range.selectNode(typeof element === "string" ? document.getElementById(element) : element);
+    range.selectNode(typeof element === 'string' ? document.getElementById(element) : element);
     window.getSelection().addRange(range);
-    document.execCommand("copy");
+    document.execCommand('copy');
     window.getSelection().removeAllRanges();
   },
-  restoreCopyState() {
-    this.set("showCopyMessage", true);
+  restoreCopyState(savedSettings) {
+    this.set('showCopyMessage', true);
+    this.set('showChildrenInfo', savedSettings.showChildrenInfo);
+    this.set('showParentInfo', savedSettings.showParentInfo);
 
     setTimeout(() => {
       if (!this.isDestroyed) {
-        this.set("showCopyMessage", false);
+        this.set('showCopyMessage', false);
       }
     }, 2000);
   }
