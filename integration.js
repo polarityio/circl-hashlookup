@@ -107,18 +107,26 @@ function getSummaryTags(body) {
   }
 
   if (body.FileName) {
-    tags.push(body.FileName);
+    tags.push(shortenTag(body.FileName));
   }
 
-  if (body.ProductName) {
-    tags.push(body.ProductName);
+  if (body.ProductCode && body.ProductCode.ProductName) {
+    tags.push(shortenTag(body.ProductCode.ProductName));
   }
 
   if (body['snap-name']) {
-    tags.push(body['snap-name']);
+    tags.push(shortenTag(body['snap-name']));
   }
 
   return tags;
+}
+
+function shortenTag(tag) {
+  const maxTagLength = 50;
+  if (tag.length > maxTagLength) {
+    return tag.slice(0, maxTagLength / 2) + '...' + tag.slice(-(maxTagLength / 2));
+  }
+  return tag;
 }
 
 module.exports = {
