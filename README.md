@@ -16,15 +16,9 @@ The CIRCL Hash lookup service includes hashes from:
 * Snap public repository
 
 
-| ![](assets/riot.png) |![](assets/tor.png)|
-|---|---|
-|*RIOT IP Address* |*Internet Scanner IP*|
-
-
-| ![](assets/cve.png) |![](assets/community.png)|
-|---|---|
-|*CVE* |*Community API Result*|
-
+| ![](images/overlay.png) | ![](images/overlay2.png) |
+|-------------------------|--------------------------|
+| *Example Hash*          | *Example Hash*           |
 
 To learn more about CIRCL Hash Lookup please see https://www.circl.lu/services/hashlookup
 
