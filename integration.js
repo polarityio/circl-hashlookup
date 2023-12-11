@@ -67,7 +67,7 @@ function lookupHash(entity, options, cb) {
         cb(null, {
           entity,
           data: {
-            summary: ['Not Found'],
+            summary: ['Unknown'],
             details: {
               notFound: true
             }
@@ -101,32 +101,13 @@ function lookupHash(entity, options, cb) {
 function getSummaryTags(body) {
   const tags = [];
 
-  if (typeof body['hashlookup:trust'] !== undefined) {
-    // Trust level should always be available
-    tags.push(`Trust level: ${body['hashlookup:trust']}`);
-  }
-
-  if (body.FileName) {
-    tags.push(shortenTag(body.FileName));
-  }
-
-  if (body.ProductCode && body.ProductCode.ProductName) {
-    tags.push(shortenTag(body.ProductCode.ProductName));
-  }
-
-  if (body['snap-name']) {
-    tags.push(shortenTag(body['snap-name']));
+  if (body.KnownMalicious) {
+    tags.push(`Malicious`);
+  } else {
+    tags.push('Known');
   }
 
   return tags;
-}
-
-function shortenTag(tag) {
-  const maxTagLength = 50;
-  if (tag.length > maxTagLength) {
-    return tag.slice(0, maxTagLength / 2) + '...' + tag.slice(-(maxTagLength / 2));
-  }
-  return tag;
 }
 
 module.exports = {
