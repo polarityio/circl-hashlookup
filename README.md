@@ -22,7 +22,7 @@ The CIRCL Hash lookup service includes hashes from:
 
 To learn more about CIRCL Hash Lookup please see https://www.circl.lu/services/hashlookup
 
-## CIRCL Has Lookup Trust Level
+## CIRCL Hash Lookup Trust Level
 
 The CIRCL Hash Lookup service includes a Trust Level.  The scale of the trust level is between 0 and 100. 50 means that CIRCL does not have any opinion on the file. If the score is below 50, CIRCL has less trust in the legitimacy of the file. If the file's trust score is above 50, it appears in multiple sources and has an improved trust.
 
