@@ -16,9 +16,9 @@ The CIRCL Hash lookup service includes hashes from:
 * Snap public repository
 
 
-| ![](images/overlay.png) | ![](images/overlay2.png) |
-|-------------------------|--------------------------|
-| *Example Hash*          | *Example Hash*           |
+| ![](images/overlay.png) | ![](images/overlay2.png) | ![](images/overlay-malicious.png) |
+|-------------------------|--------------------------|-----------------------------------|
+| *Known Hash Example*    | *Known Hash Example*     | *Malicious Hash Example*          
 
 To learn more about CIRCL Hash Lookup please see https://www.circl.lu/services/hashlookup
 
