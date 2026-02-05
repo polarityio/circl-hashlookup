@@ -1,0 +1,77 @@
+{
+  "KnownMalicious": "malshare.com",
+  "FileName": "./usr/lib/python2.7/dist-packages/response.txt",
+  "FileSize": "5",
+  "MD5": "5D41402ABC4B2A76B9719D911017C592",
+  "SHA-1": "AAF4C61DDCC5E8A2DABEDE0F3B482CD9AEA9434D",
+  "SHA-256": "2CF24DBA5FB0A30E26E83B2AC5B9E29E1B161E5C1FA7425E73043362938B9824",
+  "SHA-512": "9B71D224BD62F3785D96D46AD3EA3D73319BFBC2890CAADAE2DFF72519673CA72323C3D99BA5C11D7C7ACC6E14B8C5DA0C4663475C2E5C3ADEF46F73BCDEC043",
+  "SSDEEP": "3:iKn:p",
+  "TLSH": "",
+  "CRC32": "3610A686",
+  "SpecialCode": "",
+  "ProductCode": {
+    "ProductName": "MSDN Disc 1010",
+    "ProductVersion": "October 2001",
+    "ProductCode": "813",
+    "ApplicationType": "MSDN Library",
+    "Language": "English",
+    "MfgCode": "608",
+    "OpSystemCode": "56"
+  },
+  "OpSystemCode": {
+    "OpSystemCode": "362",
+    "OpSystemName": "TBD",
+    "OpSystemVersion": "none",
+    "MfgCode": "1006"
+  },
+  "RDS:package_id": "277147",
+  "hashlookup:trust": 100,
+  "hashlookup:parent-total": 64,
+  "db": "nsrl_legacy",
+  "source": "snap:cFe7kvmaXedPvg422WI8ESWOylb0HXjP_274",
+  "insert-timestamp": "1763484007.1259546",
+  "mimetype": "text/plain",
+  "nsrl-sha256": "rds241-sha256.zip",
+  "tar:gname": "root",
+  "tar:uname": "root",
+  "parents": [
+    {
+      "SHA-1": "0133FC19024B624E1D9DA2CF7126E6843F2CCAED",
+      "snap-authority": "canonical",
+      "snap-filename": "k26XpW9UYHL1HNh20isi5MHoazqHZ8br_417.snap",
+      "snap-id": "k26XpW9UYHL1HNh20isi5MHoazqHZ8br_417",
+      "snap-name": "zwavejs2mqtt",
+      "snap-publisher-id": "Zgwwrb2vssjDtam8qFmo4ezg3koyPPyQ",
+      "snap-signkey": "BWDEoaqyr25nF5SNCvEv2v7QnM9QsfCc0PBMYD_i2NGSQ32EF2d4D0hqUel3m8ul",
+      "snap-timestamp": "2020-12-18T00:03:34.315375Z",
+      "source-url": "https://api.snapcraft.io/api/v1/snaps/download/k26XpW9UYHL1HNh20isi5MHoazqHZ8br_417.snap"
+    },
+    {
+      "MD5": "236E42835F238A12810127B3B42B6528",
+      "PackageArch": "noarch",
+      "PackageDescription": "Apache HTTPD testsuite can be used for testing an apache instance",
+      "PackageName": "apache-test",
+      "PackageRelease": "lp152.3.1",
+      "PackageVersion": "0.svn1878849",
+      "SHA-1": "054668A2C7C20B7AC1857F7795FF9338B4AB2040",
+      "SHA-256": "AEB27DCC4F0DF1677647AD8ACC8E1E245F82B90078526B26EF1F5B8846276D93"
+    }
+  ],
+  "children": [
+    {
+      "FileName": "./opt/microsoft/powershell/7/Modules/Microsoft.PowerShell.Archive/1.2.5/Microsoft.PowerShell.Archive.psd1",
+      "MD5": "A3B42BAB8B2E2C8E8C2C5C8E6E8E8E8E",
+      "SHA-1": "B4C53CBC9C3F3D9F9D3D6D9F7F9F9F9F9F9F9F9F",
+      "SHA-256": "C5D64DCD0D4F4E0F0E4E7E0F8F0F0F0F0F0F0F0F0F0F0F0F0F0F0F0F0F0F0F0F"
+    }
+  ],
+  "PackageName": "python2.7-minimal",
+  "PackageVersion": "2.7.18",
+  "PackageSection": "python",
+  "PackageMaintainer": "Ubuntu Developers",
+  "PackageDescription": "Minimal subset of the Python language (version 2.7)",
+  "snap-name": "core18",
+  "snap-authority": "canonical",
+  "snap-filename": "cFe7kvmaXedPvg422WI8ESWOylb0HXjP_274.snap"
+}

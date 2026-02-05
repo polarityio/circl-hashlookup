@@ -1,0 +1,61 @@
+{
+  "root": {
+    "path": "",
+    "on_null": "return_empty"
+  },
+  "pipeline": [
+    {
+      "op": "copy",
+      "from": "KnownMalicious",
+      "to": "reduced_results.known_malicious"
+    },
+    {
+      "op": "copy",
+      "from": "FileName",
+      "to": "reduced_results.file_name"
+    },
+    {
+      "op": "copy",
+      "from": "hashlookup:trust",
+      "to": "reduced_results.trust_level"
+    },
+    {
+      "op": "copy",
+      "from": "MD5",
+      "to": "reduced_results.md5"
+    },
+    {
+      "op": "copy",
+      "from": "SHA-1",
+      "to": "reduced_results.sha1"
+    },
+    {
+      "op": "copy",
+      "from": "notFound",
+      "to": "reduced_results.not_found"
+    },
+    {
+      "op": "copy",
+      "from": "FileSize",
+      "to": "reduced_results.file_size"
+    },
+    {
+      "op": "copy",
+      "from": "ProductCode.ProductName",
+      "to": "reduced_results.product_name"
+    },
+    {
+      "op": "copy",
+      "from": "OpSystemCode.OpSystemName",
+      "to": "reduced_results.os_name"
+    },
+    {
+      "op": "prune",
+      "strategy": "empty_values",
+      "target": "reduced_results"
+    }
+  ],
+  "output": {
+    "result": "$working.reduced_results"
+  }
+}
